@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicias Santa Fe - Panadería y Repostería</title>
+    <title>Delicias Santa Fe - Restaurante Inteligente a Domicilio</title>
+    <meta name="description" content="Delicias Santa Fe es un restaurante inteligente a domicilio en Bogotá. Haz tu pedido por WhatsApp, sigue el estado en tiempo real y recibe tus comidas y postres en la puerta de tu casa.">
     <style>
         * {
             margin: 0;
@@ -14,151 +15,507 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #fffaf3;
         }
         header {
             background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         header h1 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .sub-header {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
             opacity: 0.9;
         }
         nav {
             background-color: #6B3410;
-            padding: 1rem;
+            padding: 0.8rem 1rem;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 1.5rem;
+            margin: 0 1rem;
             font-weight: bold;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
         nav a:hover {
             color: #FFD700;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1.5rem 3rem 1.5rem;
         }
         .section {
             margin: 3rem 0;
         }
         .section h2 {
             color: #8B4513;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border-bottom: 3px solid #D2691E;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
+            font-size: 1.6rem;
+        }
+        .section p {
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+        .highlight-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #D2691E;
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+            transform: translateY(-2px);
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .step-card {
+            background-color: #fdf5ea;
+            border-radius: 8px;
+            padding: 1.3rem;
+            border: 1px solid #f0d1a3;
+        }
+        .step-card h3 {
+            color: #8B4513;
+            margin-bottom: 0.6rem;
+            font-size: 1.05rem;
         }
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
         .product-card {
             background: #f9f9f9;
             border: 2px solid #D2691E;
             border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
+            padding: 1.2rem;
+            text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .product-card h3 {
             color: #8B4513;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
         }
-        .contact-info {
-            background-color: #f0f0f0;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
+        .product-card p {
+            font-size: 0.94rem;
         }
-        .contact-info p {
-            margin: 0.5rem 0;
-        }
-        .contact-info strong {
+        .tag {
+            display: inline-block;
+            margin-top: 0.4rem;
+            background-color: #ffe4b5;
             color: #8B4513;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: bold;
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-item h3 {
+            font-size: 1rem;
+            color: #6B3410;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            font-size: 0.95rem;
+        }
+        .contact-info, .legal-box {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+        }
+        .contact-info p, .legal-box p {
+            margin: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+        .contact-info strong, .legal-box strong {
+            color: #8B4513;
+        }
+        .badge-online {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            margin-left: 0.4rem;
+        }
+        ul {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+        ul li {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
         }
         footer {
             background-color: #6B3410;
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
         }
-        footer p {
-            margin: 0.5rem 0;
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .small-text {
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .trust-box {
+            background-color: #e6ffed;
+            border: 1px solid #8fd19e;
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🥐 Delicias Santa Fe</h1>
-        <p>Panadería y Repostería Artesanal</p>
+    <header id="inicio">
+        <h1>Delicias Santa Fe</h1>
+        <p>Restaurante Inteligente a Domicilio – Comidas y Postres solo por WhatsApp</p>
+        <p class="sub-header">Haz tu pedido, sigue el estado en tiempo real y recibe en la puerta de tu casa en Bogotá.</p>
+        <a class="btn-whatsapp" href="https://wa.me/57300XXXXXXX" target="_blank" rel="noopener noreferrer">
+            Pedir ahora por WhatsApp
+        </a>
     </header>
-    
+
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
+        <a href="#quienes-somos">Quiénes somos</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#productos">Menú y categorías</a>
+        <a href="#faq">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>
+        <a href="#legal">Legal y datos</a>
     </nav>
-    
+
     <div class="container">
-        <section class="section" id="inicio">
-            <h2>Bienvenido a Delicias Santa Fe</h2>
-            <p>Somos una panadería y repostería artesanal dedicada a la elaboración de productos de la más alta calidad, utilizando ingredientes frescos y recetas tradicionales. Con más de 10 años de experiencia, nos complace servir a nuestra comunidad con pan recién horneado, pasteles personalizados y deliciosos postres.</p>
+        <!-- QUIÉNES SOMOS -->
+        <section class="section" id="quienes-somos">
+            <h2>Quiénes somos</h2>
+            <p>
+                Delicias Santa Fe es un restaurante 100% a domicilio, especializado en comidas y postres preparados al
+                momento y entregados directamente en tu casa u oficina en Bogotá.
+            </p>
+            <p>
+                No tenemos salón físico de atención al público: toda nuestra experiencia está diseñada para que puedas
+                pedir fácil, rápido y seguro a través de WhatsApp, con total transparencia sobre el estado de tu pedido.
+            </p>
+            <p>
+                Nuestro equipo combina cocina artesanal con tecnología inteligente: sistemas internos que gestionan
+                inventario, cocina, repartidores, pagos y seguridad, para que tú solo tengas que escribir por WhatsApp
+                y disfrutar.
+            </p>
+
+            <div class="highlight-box">
+                <strong>Nuestro propósito</strong>
+                <p>
+                    Hacer que pedir comida y postres a domicilio sea una experiencia confiable, transparente y deliciosa,
+                    donde siempre sepas qué está pasando con tu pedido y puedas sentir que tienes un “restaurante
+                    inteligente” en tu bolsillo.
+                </p>
+            </div>
         </section>
-        
+
+        <!-- CÓMO FUNCIONA -->
+        <section class="section" id="como-funciona">
+            <h2>Cómo funciona nuestro sistema de pedidos por WhatsApp</h2>
+            <p>
+                Hemos creado un sistema inteligente que conecta tu chat de WhatsApp con nuestra cocina, inventario,
+                repartidores y pagos. Todo está automatizado por detrás, pero para ti es tan sencillo como escribirnos.
+            </p>
+
+            <div class="steps">
+                <div class="step-card">
+                    <h3>1. Escribe por WhatsApp</h3>
+                    <p>
+                        Inicias la conversación, revisas el menú y eliges tus platos y postres. Nuestro asistente te
+                        guiará paso a paso.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h3>2. Confirmación y estado del pedido</h3>
+                    <p>
+                        Te mostramos el resumen de tu pedido, el valor total y el método de pago. Luego verás actualizaciones
+                        del estado: “recibido”, “en cocina”, “en camino” y “entregado”.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h3>3. Preparación en cocina</h3>
+                    <p>
+                        Nuestro sistema interno envía tu orden a cocina, descuenta inventario y activa tiempos de
+                        preparación para que todo llegue fresco.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h3>4. Entrega a domicilio</h3>
+                    <p>
+                        Asignamos el repartidor más cercano y gestionamos la ruta. Tú solo esperas el mensaje de “en camino”
+                        y recibes tu pedido en la dirección indicada.
+                    </p>
+                </div>
+            </div>
+
+            <div class="trust-box">
+                <strong>Experiencia transparente:</strong>
+                <p class="small-text">
+                    Usamos tecnología similar a la de grandes plataformas: sistemas de inventario, control de pedidos,
+                    analítica, seguridad anti-fraude y manejo seguro de tus datos. Todo para darte una experiencia
+                    confiable cada vez que pides.
+                </p>
+            </div>
+
+            <a class="btn-whatsapp" href="https://wa.me/57300XXXXXXX" target="_blank" rel="noopener noreferrer">
+                Quiero hacer un pedido ahora
+            </a>
+        </section>
+
+        <!-- PRODUCTOS / MENÚ -->
         <section class="section" id="productos">
-            <h2>Nuestros Productos</h2>
+            <h2>Menú y categorías principales</h2>
+            <p>
+                Estos son algunos de los tipos de comidas y postres que manejamos. El menú completo y actualizado lo
+                recibes directamente en WhatsApp cuando nos escribes.
+            </p>
+
             <div class="products">
                 <div class="product-card">
-                    <h3>🍞 Pan Artesanal</h3>
-                    <p>Pan integral, baguettes, ciabatta y pan de pueblo elaborado diariamente.</p>
+                    <h3>Platos fuertes a domicilio</h3>
+                    <p>
+                        Opciones completas para almuerzo o cena, con porciones generosas y acompañamientos. Ideales para
+                        el día a día o para compartir en familia.
+                    </p>
+                    <span class="tag">Solo a domicilio</span>
                 </div>
+
                 <div class="product-card">
-                    <h3>🎂 Pasteles Personalizados</h3>
-                    <p>Creamos pasteles únicos para tus celebraciones especiales.</p>
+                    <h3>Postres y repostería</h3>
+                    <p>
+                        Tortas, postres fríos, brownies, cupcakes y antojitos dulces para cualquier ocasión. También
+                        opciones para celebraciones especiales.
+                    </p>
+                    <span class="tag">Hechos al momento</span>
                 </div>
+
                 <div class="product-card">
-                    <h3>🧁 Cupcakes y Postres</h3>
-                    <p>Cupcakes decorados, brownies, galletas y otros dulces artesanales.</p>
+                    <h3>Combos y menús especiales</h3>
+                    <p>
+                        Combos familiares, menús para oficina, opciones para cumpleaños y celebraciones, todo con precios
+                        especiales y entrega programada.
+                    </p>
+                    <span class="tag">Personalizables</span>
                 </div>
+
                 <div class="product-card">
-                    <h3>☕ Café y Bebidas</h3>
-                    <p>Café fresco y bebidas complementarias para acompañar nuestros productos.</p>
+                    <h3>Bebidas y acompañamientos</h3>
+                    <p>
+                        Bebidas calientes y frías, acompañamientos, panes y opciones adicionales para completar tu pedido.
+                    </p>
+                    <span class="tag">Para complementar</span>
                 </div>
             </div>
+
+            <p style="margin-top:1rem;font-size:0.9rem;">
+                Nota: El detalle de platos, ingredientes, precios y disponibilidad puede variar según el día.
+                Siempre te mostraremos el menú actualizado directamente en el chat de WhatsApp.
+            </p>
         </section>
-        
+
+        <!-- PREGUNTAS FRECUENTES -->
+        <section class="section" id="faq">
+            <h2>Preguntas frecuentes</h2>
+
+            <div class="faq-item">
+                <h3>¿Tienen restaurante físico para comer en el lugar?</h3>
+                <p>
+                    No. Delicias Santa Fe es un restaurante <strong>100% a domicilio</strong>. No contamos con salón
+                    de atención al público. Todos los pedidos se hacen por WhatsApp y se entregan en tu dirección.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿En qué zonas de Bogotá hacen entregas?</h3>
+                <p>
+                    Realizamos entregas en diferentes zonas de Bogotá. Cuando nos escribas por WhatsApp, te confirmaremos
+                    si tu dirección está dentro de nuestra cobertura y el costo del domicilio.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Cómo sé en qué estado va mi pedido?</h3>
+                <p>
+                    Desde el mismo chat de WhatsApp te mostramos el avance: pedido recibido, en cocina, en camino y
+                    entregado. Nuestro sistema interno conecta cocina, repartidores y notificaciones en tiempo real.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Qué métodos de pago aceptan?</h3>
+                <p>
+                    Manejaros pago en efectivo contra entrega y opciones de pago electrónico (bancario / datáfono,
+                    según disponibilidad). En el chat te indicaremos qué métodos están activos en el momento de tu pedido.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Puedo programar un pedido para una fecha y hora específica?</h3>
+                <p>
+                    Sí, puedes programar pedidos para cumpleaños, reuniones u ocasiones especiales. Cuéntanos la fecha,
+                    hora y cantidad de personas, y te ayudamos a armar la mejor opción.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Qué pasa si quiero cancelar o modificar un pedido?</h3>
+                <p>
+                    Depende del estado del pedido. Si aún no ha entrado en preparación, podemos ajustar o cancelar sin
+                    problema. Si ya está en cocina o en camino, te explicaremos las opciones disponibles.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
         <section class="section" id="contacto">
             <h2>Contacto</h2>
-            <div class="contact-info">
-                <p><strong>Dirección:</strong> Santa Fe, Colombia</p>
-                <p><strong>Teléfono:</strong> +57 3XX XXX XXXX</p>
-                <p><strong>Email:</strong> contacto@deliciassantafe.com</p>
-                <p><strong>Horario:</strong> Lunes a Sábado 6:00 AM - 8:00 PM</p>
-                <p style="margin-top: 1rem;"><strong>Síguenos en:</strong> Facebook | Instagram | WhatsApp</p>
+            <div class="two-columns">
+                <div>
+                    <p>
+                        Si tienes dudas, quieres hacer un pedido especial o necesitas ayuda con tu orden, puedes
+                        comunicarte con nosotros por estos medios:
+                    </p>
+                    <div class="contact-info">
+                        <p><strong>Ciudad de operación:</strong> Bogotá, Colombia</p>
+                        <p><strong>Canal principal de pedidos (WhatsApp):</strong> +57 300 XXX XXXX <span class="badge-online">En línea</span></p>
+                        <p><strong>Teléfono alterno:</strong> +57 3XX XXX XXXX</p>
+                        <p><strong>Correo electrónico:</strong> contacto@deliciassantafe.com</p>
+                        <p><strong>Horarios de atención:</strong> Lunes a Domingo, 11:00 a.m. – 9:00 p.m.</p>
+                        <p><strong>Redes sociales:</strong> Facebook | Instagram | WhatsApp</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="highlight-box">
+                        <strong>Pedir por WhatsApp</strong>
+                        <p class="small-text">
+                            Haz clic en el botón y empieza a chatear con nuestro asistente. Te mostraremos el menú,
+                            el valor de tu pedido y el estado en cada etapa.
+                        </p>
+                        <a class="btn-whatsapp" href="https://wa.me/57300XXXXXXX" target="_blank" rel="noopener noreferrer">
+                            Abrir chat de WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- LEGAL Y DATOS -->
+        <section class="section" id="legal">
+            <h2>Información legal y tratamiento de datos</h2>
+
+            <div class="legal-box">
+                <p>
+                    En Delicias Santa Fe respetamos y protegemos tu información personal. Los datos que compartes con
+                    nosotros por WhatsApp, teléfono o correo se utilizan exclusivamente para:
+                </p>
+                <ul>
+                    <li>Gestionar tus pedidos y entregas a domicilio.</li>
+                    <li>Contactarte en caso de dudas, confirmaciones o novedades de tu pedido.</li>
+                    <li>Mejorar nuestro servicio y experiencia de atención.</li>
+                    <li>En algunos casos, enviarte información relevante sobre promociones o novedades, siempre con tu autorización.</li>
+                </ul>
+
+                <p style="margin-top:0.8rem;">
+                    No vendemos ni compartimos tu información personal con terceros para fines comerciales ajenos al
+                    servicio de Delicias Santa Fe.
+                </p>
+
+                <p style="margin-top:0.8rem;">
+                    Al usar nuestros canales de atención (WhatsApp, teléfono, correo o redes sociales) aceptas de forma
+                    voluntaria el tratamiento de tus datos conforme a la normativa de protección de datos personales
+                    vigente en Colombia.
+                </p>
+
+                <p style="margin-top:0.8rem;">
+                    Si deseas consultar, actualizar o eliminar tu información de nuestras bases de datos, puedes escribirnos
+                    a: <strong>datos@deliciassantafe.com</strong>
+                </p>
+            </div>
+
+            <p class="small-text" style="margin-top:0.8rem;">
+                Esta página tiene fines informativos y comerciales. La operación y prestación del servicio están
+                sujetas a disponibilidad, cobertura y condiciones internas de Delicias Santa Fe.
+            </p>
+        </section>
     </div>
-    
+
     <footer>
         <p>&copy; 2024 Delicias Santa Fe. Todos los derechos reservados.</p>
-        <p>Panadería y Repostería Artesanal | Santa Fe, Colombia</p>
+        <p>Restaurante inteligente a domicilio | Bogotá, Colombia</p>
+        <p class="small-text">
+            Atención principal por WhatsApp Business. Experiencia optimizada para pedidos, seguimiento y soporte.
+        </p>
     </footer>
 </body>
 </html>
